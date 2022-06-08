@@ -1,0 +1,107 @@
+
+::before, ::after{
+    box-sizing: border-box;
+}
+
+.header {
+    width: 100%;
+    height: 70px;
+    padding: 4px 30px;
+    background-color: #000000;
+}
+.header-left-nav {
+    float: left;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.header-left-nav form {
+    display: inline-block;
+}
+.header-sharch {
+    position: relative;
+}
+.header-left-nav .form-control {
+    width: 180px;
+    display: inline-block;
+    position: relative;
+    border-radius: 2px;
+    padding-left: 30px;
+}
+.header i {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    font-size: 18px;
+}
+
+.top .top-main{
+    background-image: url(https://presite-potepancamp-rails-02.herokuapp.com/assets/img_cover_top.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 650px;
+}
+
+div{
+    display: block;
+}
+a{
+    color: #111;
+}
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.m-5{
+    margin: 3rem!important;
+}
+.top .section-title{
+    font-size: 24px;
+    margin: 35px 0;
+    font-weight: bold;
+}
+.top .panel-image{
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+.top .span{
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    color: #fff;
+    font-weight: bold;
+    z-index: 1;
+    margin: auto;
+    text-align: center;
+    font-size: 24px;
+}
+.shadow {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+
+footer{
+    // position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 180px;
+    margin-top: 64px;
+    padding-top: 90px;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+}

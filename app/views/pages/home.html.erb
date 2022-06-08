@@ -1,0 +1,101 @@
+
+
+<header class="header">
+    <div class="header-inner">
+        <div class="header-left-nav">
+            <a href="http://localhost:3000/pages/home">
+                <img src="	https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="サイトのロゴ画像">
+            </a>
+            <form action=""> <!--form action-->
+                <div class="header-search">
+                    <input type="text" name="area" id="area" value="" class="form-control" placeholder="エリア">
+                    <i class="fas fa-map-marker-alt">
+                        ::before
+                    </i>
+                </div>
+                <div class="header-search ">
+                    <input type="text" name="keyword" id="keyword" value="" class="form-control" placeholder="キーワード">
+                    <i class="fas fa-search">
+                        ::before
+                    </i>
+                </div>
+                <input type="submit" name="commit" value="" class="d-none" data-disable-with>
+            </form>
+        </div>
+        <div class="header-right-nav">
+            <div class="nav-item">
+                <a class="btn btn-primary" href="">ログイン</a> <!--hrefにログイン先、登録先URLを設置する-->
+                <a class="btn btn-secondary" href="">登録する</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="clear-fix">
+    ::after
+</div>
+
+<div class="top">
+    <div class="top-main">
+        <div class="container">
+            <div class="row col-lg-6">
+                <div class="form-fream">
+                    <div class="form-area">
+                        <p class="form-area-title mb-4">Potepan Shareでまだ体験したことのない旅をしよう</p>
+                        <!-- form action -->
+                        <label for="___">エリア</label>
+                        <input type="text" name="area" value="" class="form-control mb-4" placeholder="東京">
+                        <input type="submit" name="commit" value="探す" class="form-control btn-primary mb-4">
+                        <!--  form action 閉じ-->
+                    </div>
+                </div>
+                    
+            </div>
+
+                
+        </div>
+        
+
+    </div>
+
+    <div class="container">
+        <div class="panel-area m-5">
+            <h1 class="section-title">おすすめのエリア</h1>
+            <div class="row">
+                <div class="panel-item col-lg-3 col-6">
+                    <span>東京</span>
+                    <a href="https://presite-potepancamp-rails-02.herokuapp.com/rooms/search?area=%E6%9D%B1%E4%BA%AC">
+                        <img class="panel-image" src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_tokyo.jpg">
+                    </a>
+                    <div class="shadow"></div>
+                </div>
+                <div class="panel-item col-lg-3 col-6">
+                    <span>大阪</span>
+                    <a href="https://presite-potepancamp-rails-02.herokuapp.com/rooms/search?area=%E5%A4%A7%E9%98%AA">
+                        <img class="panel-image" src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_osaka.jpg">
+                    </a>
+                    <div class="shadow"></div>
+                </div>
+                <div class="panel-item col-lg-3 col-6">
+                    <span>京都</span>
+                    <a href="https://presite-potepancamp-rails-02.herokuapp.com/rooms/search?area=%E4%BA%AC%E9%83%BD">
+                        <img class="panel-image" src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_kyoto.jpg">
+                    </a>
+                    <div class="shadow"></div>
+                </div>
+                <div class="panel-item col-lg-3 col-6">
+                    <span>札幌</span>
+                    <a href="https://presite-potepancamp-rails-02.herokuapp.com/rooms/search?area=%E6%9C%AD%E5%B9%8C">
+                        <img class="panel-image" src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_sapporo.jpg">
+                    </a>
+                    <div class="shadow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>©︎ 2020 POTEPAN.INC</p>
+
+</footer>
