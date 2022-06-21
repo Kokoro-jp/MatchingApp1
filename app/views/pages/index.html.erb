@@ -5,15 +5,15 @@
         <form action=""> <!--form action-->
             <div class="header-search">
                 <input type="text" name="area" id="area" value="" class="form-control" placeholder="エリア">
-                <i class="fas fa-map-marker-alt">
+                <!-- <i class="fas fa-map-marker-alt">
                     ::before
-                </i>
+                </i> -->
             </div>
             <div class="header-search ">
                 <input type="text" name="keyword" id="keyword" value="" class="form-control" placeholder="キーワード">
-                <i class="fas fa-search">
+                <!-- <i class="fas fa-search">
                     ::before
-                </i>
+                </i> -->
             </div>
             <input type="submit" name="commit" value="" class="d-none" data-disable-with>
         </form>
@@ -22,9 +22,9 @@
             <div class="nav-item">
                 <nav>
                     <% if user_signed_in? %>
-                     <strong><%= link_to current_user.username, pages_show_path %></strong>
-                        <%= link_to 'Change profile', edit_user_registration_path %>
-                        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+                     <strong><%= link_to current_user.name, pages_show_path %></strong>
+                        <!-- <%= link_to 'Change profile', edit_user_registration_path %> -->
+                        <%= link_to 'Logout', logout_path  %>
                     <% else %>
                         <div class="btn-signup">
                             <%= link_to 'Signup', new_user_registration_path %>
@@ -39,9 +39,9 @@
     </div>
 </header>
 
-<div class="clear-fix">
+<!-- <div class="clear-fix">
     ::after
-</div>
+</div> -->
 
 <div class="top">
     <div class="top-main">

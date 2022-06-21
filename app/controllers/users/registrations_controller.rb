@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    @user = User.new(params.require(:user).permit(:name, :email, :encrypted_password))
+    @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
     if @user.save
       flash[:notice] = "Created new account"
     else
@@ -21,7 +21,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   # def edit
-  #   super
+  #   @user = User.find(params)
   # end
 
   # PUT /resource
@@ -49,10 +49,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   # end
+
   # プロフィール画面用のアクションを追加
-  def detail
-      @user = User.find_by(id: params[:id])
-  end
+  # def detail
+  #     @user = User.find_by(id: params[:id])
+  # end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
@@ -61,7 +62,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    "/user/#{current_user.id}"
+    pages_show_path
+    # "/user/#{current_user.id}"
   end
 
   # The path used after sign up for inactive accounts.

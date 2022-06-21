@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get "user/:id", :to => "users/registrations#detail"
+    # get "user/:id", :to => "users/registrations#detail"
     get "signup", :to => "users/registrations#new"
     get "login", :to => "users/sessions#new"
     get "logout", :to => "users/sessions#destroy"
@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root to: "pages#index"
+  get 'pages/index'
   get 'pages/show'
 end
