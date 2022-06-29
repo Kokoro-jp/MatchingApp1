@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'rooms/index'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'   
@@ -17,4 +18,6 @@ Rails.application.routes.draw do
   root to: "pages#index"
   get 'pages/index'
   get 'pages/show'
+
+  resources :rooms
 end
