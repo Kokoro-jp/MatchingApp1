@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
    @rooms = Room.all
@@ -10,9 +11,10 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
+    @user_id = current_user.id
     if @room.save
       flash[:notice]= "registrated new room"
-      redirect_to @room  #room詳細ページに飛ばす
+      redirect_to @room #room予約詳細ページに飛ばす reservations/#{@room.id}
     else
       render "new"
     end
@@ -20,6 +22,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find_by(id: params[:id])
+    binding.pry
   end
 
   # def edit
@@ -36,7 +39,7 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:room_name, :room_introduction, :room_price, :room_address, :room_img)
+    params.require(:room).permit(:room_name, :room_introduction, :room_price, :room_address, :room_img, :user_id)
   end
     
 end

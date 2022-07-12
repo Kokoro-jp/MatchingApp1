@@ -1,0 +1,41 @@
+<h3>予約内容確認</h3>
+<h4><%= @price%> / 日</h4>
+
+<%= form_with model: @reservation  do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :room_id, value: @room.id%>
+
+    <%= f.label :start_date, "開始日"%>
+    <%= f.date_field :start_date, value:@reservation.start_date %>
+
+    <%= f.label :end_date, "終了日"%>
+    <%= f.date_field :end_date, value:@reservation.end_date %>
+
+    <h5>使用日数: <%= @days %>日</h5>
+    <h5>人数: <%= @reservation.person_num %>人</h5>
+
+    <h5>合計金額: <%= @price%></h5>
+<% end %>
+
+<%= form_with mothod: :post, url: reservations_back_path do |f| %>
+    <%= f.hidden_field :room_name, value: @room.id%>
+    <%= f.hidden_field :start_date, value: @reservation.id%>
+    <%= f.hidden_field :end_date, value: @reservation.id%>
+    <%= @price%>
+    <%= f.submit '入力画面に戻る'%>
+<% end %>
+
+<%= form_with mothod: :post, url: reservations_path do |f| %>
+    <%= f.hidden_field :room_name, value: @room.id%>
+    <%= f.hidden_field :start_date, value: @reservation.id%>
+    <%= f.hidden_field :end_date, value: @reservation.id%>
+    <%= @price%>
+    <%= f.submit '送信する'%>
+    <!-- <%= f.submit "予約を確定"%> -->
+    <!-- <%= link_to "ルーム詳細に戻る", room_path(:id)%> -->
+<% end %>
+   
+
+
+
+

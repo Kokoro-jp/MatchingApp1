@@ -1,6 +1,7 @@
 <h3>room情報新規登録</h3>
 
 <%= form_with model: @room do |f| %>
+<%= f.hidden_field :user_id, :value => current_user.id%>
 
     <table>
         <tr>
@@ -13,7 +14,7 @@
         </tr>
         <tr>
             <th><%= f.label :room_price ,"ルーム料金" %></th>
-            <td><%= f.text_field :room_price, class: "" %></td>
+            <td><%= f.number_field :room_price, class: "" %></td>
         </tr>
         <tr>
             <th><%= f.label :room_address ,"住所" %></th>
@@ -24,6 +25,7 @@
             <td><%= f.file_field :room_img, class: "" %></td>
         </tr>
     </table>
+
 
     <div>
         <ul>

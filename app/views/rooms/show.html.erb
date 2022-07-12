@@ -1,14 +1,43 @@
-<table>
-    <div>
-       <td>
-        <%= image_tag @room.room_img.url %>
-        </td>
+
+<%= form_with model: @room do |f| %>
+    <table>
+        <td><%= image_tag @room.room_img.url %></td>
         <td><%= @room.room_name %></td>
-        <td><%= @room.room_address %></td> 
-    </div>
+        <td><%= @room.room_address %></td>
+        <td><%= @room.room_introduction %></td>
+    </table>
+<% end %>
+
+<%= form_with model: @reservation, method: :post, url: reservations_confirm_path, local: true do |f|%>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+
+    <table>
+        <div>
+            <tr>
+                <th>合計金額</th>
+                <td><%= @room.room_price %>円/日</td> 
+            </tr>
+            <tr>
+                <th><%= f.label :start_date, "開始日"%></th>
+                <td><%= f.date_select :start_date, class: "" %></td> 
+            </tr>
+            <tr>
+                <th><%= f.label :end_date, "終了日"%></th>
+                <td><%= f.date_select :end_date, class: "" %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :person_num, "人数"%></th>
+                <td><%= f.number_field :person_num, class: "" %>名様</td>
+            </tr>
+        </div>
+    </table>
+
     <div>
-        <td><%= @room.room_introduction %></td>  
+        <ul>
+            <li><%= f.submit "確認画面へ"%></li>
+        </ul>
     </div>
-   
-    
-</table>
+        
+<% end %>
