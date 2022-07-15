@@ -22,17 +22,18 @@ class ReservationsController < ApplicationController
     @room = Room.find(params[:room_id])
     binding.pry
     @reservation = Reservation.new(params.permit(:start_date, :end_date, :person_num, :room_id, :user_id))
-    
-    binding.pry
-
+    render 'rooms/show' if @reservation.invalid?
     @user_id = current_user.id
+    binding.pry
     @days = (@reservation.end_date - @reservation.start_date).to_i
+    binding.pry
     @price = @days*@room.room_price*@reservation.person_num
+    binding.pry
   end
 
-  # def complete
-  #   Reservation.create!(reservation_params)
-  # end
+  def complete
+    Reservation.create!(reservation_params)
+  end
 
 
   def create
@@ -55,6 +56,7 @@ class ReservationsController < ApplicationController
     binding.pry
     @room = Room.find(params[:id])
     @reservation = Reservation.find(params[:id])
+    binding.pry
   end
 
   # def edit
