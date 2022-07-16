@@ -21,9 +21,11 @@ Rails.application.routes.draw do
   get 'pages/show'
 
   resources :rooms
+
+  get 'reservations/confirm', to: 'reservations#confirm' #確認画面'
   resources :reservations
 
-  post 'reservations/confirm', to: 'reservations#confirm' #確認画面
+  post 'reservations/check', to: 'reservations#check'
   post 'reservations/back'  # 確認画面から「入力画面に戻る」をクリックした時
   post 'reservations/complete' #完了画面
 end

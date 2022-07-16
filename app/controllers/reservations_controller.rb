@@ -5,7 +5,6 @@ class ReservationsController < ApplicationController
 
   def new
     @room = Room.find(params[:id])
-    binding.pry
     @reservation = Reservation.new(reservation_params)
   end
 
@@ -15,17 +14,32 @@ class ReservationsController < ApplicationController
     render "new"
   end
 
+  def check
+    @room = Room.find(reservation_params[:room_id])
+    @reservation = current_user.reservations.build(reservation_params)
+
+    if @reservation.invalid?
+      flash[:danger] = "Invalid parameters"
+      render "rooms/show"
+    end
+
+    @user_id = current_user.id
+    @days = (@reservation.end_date - @reservation.start_date).to_i
+    @price = @days*@room.room_price*@reservation.person_num
+
+    redirect_to reservations_confirm_path(
+      start_date: @reservation.start_date,
+      end_date: @reservation.end_date,
+      person_num: @reservation.person_num,
+      price: @price,
+    )
+  end
+
   def confirm
-    p "==========================="
-    redirect_to action: :index
-    # @room = Room.find(params[:room_id])
-    # @reservation = Reservation.new(params.permit(:start_date, :end_date, :person_num, :room_id, :user_id))
-    # render 'rooms/show' if @reservation.invalid?
-    # @user_id = current_user.id
-    # @days = (@reservation.end_date - @reservation.start_date).to_i
-    # @price = @days*@room.room_price*@reservation.person_num
-    # redirect_to action: :confirm
-    # binding.pry
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
+    @person_num = params[:person_num]
+    @price = params[:price]
   end
 
   # def complete
@@ -34,15 +48,13 @@ class ReservationsController < ApplicationController
 
 
   def create
-    @reservation = Reservation.new(reservation_params)
-    @room = Room.find(params[:room_id])
+    @reservation = current_user.reservations.build(reservation_params)
     if @reservation.save
       binding.pry
       flash[:notice] = "You made a reservation"
-      redirect_to @reservation
+      redirect_to rooms_path
     else
-      binding.pry
-      render "confirm"
+      redirect_to rooms_path
     end
   end
 
@@ -63,7 +75,6 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    binding.pry
     params.require(:reservation).permit(:start_date, :end_date, :person_num, :user_id, :room_id)
   end
 end

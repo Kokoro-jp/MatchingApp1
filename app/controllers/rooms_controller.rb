@@ -10,8 +10,8 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new(room_params)
     @user_id = current_user.id
+    @room = current_user.rooms.build(room_params)
     if @room.save
       flash[:notice]= "registrated new room"
       redirect_to @room #room予約詳細ページに飛ばす reservations/#{@room.id}
@@ -38,7 +38,6 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:room_name, :room_introduction, :room_price, :room_address, :room_img, :user_id)
+    params.require(:room).permit(:room_name, :room_introduction, :room_price, :room_address, :room_img)
   end
-    
 end
