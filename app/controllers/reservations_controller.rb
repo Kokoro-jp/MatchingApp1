@@ -15,33 +15,27 @@ class ReservationsController < ApplicationController
     render "new"
   end
 
-  # private
-
   def confirm
-    binding.pry
-    @room = Room.find(params[:room_id])
-    binding.pry
-    @reservation = Reservation.new(params.permit(:start_date, :end_date, :person_num, :room_id, :user_id))
-    render 'rooms/show' if @reservation.invalid?
-    @user_id = current_user.id
-    binding.pry
-    @days = (@reservation.end_date - @reservation.start_date).to_i
-    binding.pry
-    @price = @days*@room.room_price*@reservation.person_num
-    binding.pry
+    p "==========================="
+    redirect_to action: :index
+    # @room = Room.find(params[:room_id])
+    # @reservation = Reservation.new(params.permit(:start_date, :end_date, :person_num, :room_id, :user_id))
+    # render 'rooms/show' if @reservation.invalid?
+    # @user_id = current_user.id
+    # @days = (@reservation.end_date - @reservation.start_date).to_i
+    # @price = @days*@room.room_price*@reservation.person_num
+    # redirect_to action: :confirm
+    # binding.pry
   end
 
-  def complete
-    Reservation.create!(reservation_params)
-  end
+  # def complete
+  #   Reservation.create!(reservation_params)
+  # end
 
 
   def create
-    binding.pry
     @reservation = Reservation.new(reservation_params)
-    binding.pry
     @room = Room.find(params[:room_id])
-    binding.pry
     if @reservation.save
       binding.pry
       flash[:notice] = "You made a reservation"
@@ -53,10 +47,8 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    binding.pry
-    @room = Room.find(params[:id])
+    @room = Room.find(params[:room_id])
     @reservation = Reservation.find(params[:id])
-    binding.pry
   end
 
   # def edit
