@@ -14,7 +14,7 @@ class RoomsController < ApplicationController
     @user_id = current_user.id
     if @room.save
       flash[:notice]= "registrated new room"
-      redirect_to @room #room予約詳細ページに飛ばす reservations/#{@room.id}
+      redirect_to @room #room予約詳細ページに飛ばす
     else
       render "new"
     end

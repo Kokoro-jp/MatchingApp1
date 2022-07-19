@@ -8,7 +8,7 @@
     </table>
 <% end %>
 
-<%= form_with model: @reservation, url: reservations_confirm_path, local: true do |f|%>
+<%= form_with model: @reservation, url: reservations_confirm_path, data: {turbo: false} do |f|%>
 
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :room_id, value: @room.id %>

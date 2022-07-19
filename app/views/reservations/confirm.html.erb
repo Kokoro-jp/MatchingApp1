@@ -1,2 +1,22 @@
-<h1>Reservations#index</h1>
-<p>Find me in app/views/reservations/index.html.erb</p>
+<h3>予約内容確認</h3>
+<h4><%= @price%> 円/ 日</h4>
+
+<%= form_with model: @reservation, method: :post, url: reservations_path, local: true, scope: :reservation  do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :room_id, value: @room.id%>
+
+    <%= f.label :start_date, "開始日"%>
+    <%= f.date_field :start_date, value:@reservation.start_date, :readonly => true %>
+
+    <%= f.label :end_date, "終了日"%>
+    <%= f.date_field :end_date, value:@reservation.end_date, :readonly => true %>
+
+    <%= f.hidden_field :person_num %>
+    <h5>使用日数: <%= @days %>日</h5>
+    <h5>人数: <%= @reservation.person_num %>人</h5>
+
+    <h5>合計金額: <%= @price%>円</h5>
+
+    <%= f.submit "予約を確定"%>
+    <%= link_to "ルーム詳細に戻る", controller: 'rooms', action: 'show', id: @reservation.room.id%>
+<% end %>

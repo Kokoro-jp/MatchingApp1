@@ -9,23 +9,21 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
   end
 
-  def back
-    binding.pry
-    @reservation = Reservation.new(reservation_params)
-    render "new"
-  end
+  # def back
+  #   @room = Room.find(params[:id])
+  #   binding.pry
+  #   @reservation = Reservation.new(params.permit(:start_date, :end_date, :person_num, :room_id, :user_id))
+  #   binding.pry
+  #   render "rooms/show"
+  # end
 
   def confirm
-    p "==========================="
-    redirect_to action: :index
-    # @room = Room.find(params[:room_id])
-    # @reservation = Reservation.new(params.permit(:start_date, :end_date, :person_num, :room_id, :user_id))
-    # render 'rooms/show' if @reservation.invalid?
-    # @user_id = current_user.id
-    # @days = (@reservation.end_date - @reservation.start_date).to_i
-    # @price = @days*@room.room_price*@reservation.person_num
-    # redirect_to action: :confirm
-    # binding.pry
+    @room = Room.find(params[:room_id])
+    @reservation = Reservation.new(params.permit(:start_date, :end_date, :person_num, :room_id, :user_id))
+    render 'rooms/show' if @reservation.invalid?
+    @user_id = current_user.id
+    @days = (@reservation.end_date - @reservation.start_date).to_i
+    @price = @days*@room.room_price*@reservation.person_num
   end
 
   # def complete
@@ -35,7 +33,8 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
-    @room = Room.find(params[:room_id])
+    @room = @reservation.room
+    binding.pry
     if @reservation.save
       binding.pry
       flash[:notice] = "You made a reservation"
@@ -47,8 +46,13 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    @room = Room.find(params[:room_id])
-    @reservation = Reservation.find(params[:id])
+    
+    binding.pry
+    @reservation = Reservation.find_by(id: params[:id])
+    binding.pry
+    @room = @reservation.room
+    @days = (@reservation.end_date - @reservation.start_date).to_i
+    @price = @days*@room.room_price*@reservation.person_num
   end
 
   # def edit
