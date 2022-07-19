@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
+    binding.pry
   end
 
   def new
