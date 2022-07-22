@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'rooms/index'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
-    :sessions => 'users/sessions'   
+    :sessions => 'users/sessions'
   }
 
   devise_scope :user do
@@ -24,5 +24,4 @@ Rails.application.routes.draw do
   resources :reservations
 
   post 'reservations/confirm', to: 'reservations#confirm' #確認画面
-  post 'reservations/back'  # 確認画面から「入力画面に戻る」をクリックした時
 end
