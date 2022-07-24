@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   </head>
 
   <body>
@@ -26,7 +27,7 @@
                 <% if user_signed_in? %>
                  <strong><%= link_to current_user.name, pages_show_path %></strong>
                     <!-- <%= link_to 'Change profile', edit_user_registration_path %> -->
-                    <%= link_to 'Logout', logout_path  %>
+                    <!-- <%= link_to 'Logout', logout_path  %> -->
                 <% else %>
                     <div class="btn-signup">
                         <%= link_to 'Signup', new_user_registration_path %>
@@ -36,6 +37,21 @@
                     </div>
                 <% end %>
             </nav>
+            <span class="nav_toggle">
+              <i></i>
+              <i></i>
+              <i></i>
+            </span>
+
+            <nav class="nav">
+              <ul class="nav_menu_ul">
+                <li class="nav_menu_li"><%= link_to 'ルーム登録', new_room_path %></li>
+                <li class="nav_menu_li"><%= link_to '予約済みルーム一覧', reservations_path %></li>
+                <li class="nav_menu_li"><%= link_to '登録済みルーム一覧', rooms_path %></li>
+                <li class="nav_menu_li"><%= link_to '設定', pages_show_path %></li>
+                <li class="nav_menu_li"><%= link_to 'logout', logout_path%></li>
+              </ul>
+            </nav>
         </div>
     </div>
     </header>
@@ -43,6 +59,13 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
+    <body>
+      <script>
+        $(".nav_toggle").on("click", function () {
+          $(".nav_toggle, .nav").toggleClass("show");
+        });
+      </script>
+    </body>
     <%= yield %>
 
     <footer>
