@@ -36,6 +36,14 @@ class RoomsController < ApplicationController
     flash[:notice]= "deleted the room"
     redirect_to :rooms
   end
+  
+  def search
+    binding.pry
+    @search = Room.ransack(params[:q])
+    @rooms = @search.result
+    @numbers = @rooms.count
+  end
+ 
 
   def room_params
     params.require(:room).permit(:room_name, :room_introduction, :room_price, :room_address, :room_img, :user_id)

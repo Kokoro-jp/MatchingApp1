@@ -16,6 +16,27 @@
         <a href="http://localhost:3000">
             <img src="	https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="サイトのロゴ画像">
         </a>
+      </div>
+      <div class="header-inner">
+      </div>
+
+      <div class="header-right-nav">
+        <div class="nav-item">
+            <nav>
+                <% if user_signed_in? %>
+                 <strong><%= link_to current_user.name, pages_show_path %></strong>
+                    <!-- <%= link_to 'Change profile', edit_user_registration_path %> -->
+                    <%= link_to 'Logout', logout_path  %>
+                <% else %>
+                    <div class="btn-signup">
+                        <%= link_to 'Signup', new_user_registration_path %>
+                    </div>
+                    <div class="btn-login">
+                        <%= link_to 'Login', new_user_session_path %>
+                    </div>
+                <% end %>
+            </nav>
+        </div>
     </div>
     </header>
 

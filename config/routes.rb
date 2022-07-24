@@ -20,7 +20,11 @@ Rails.application.routes.draw do
   get 'pages/index'
   get 'pages/show'
 
-  resources :rooms
+  resources :rooms do
+    collection do
+      get 'search'
+    end
+  end
   resources :reservations
 
   post 'reservations/confirm', to: 'reservations#confirm' #確認画面

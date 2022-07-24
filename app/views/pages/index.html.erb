@@ -1,42 +1,5 @@
 
 
-<header class="header">
-    <div class="header-inner">
-        <form action=""> <!--form action-->
-            <div class="header-search">
-                <input type="text" name="area" id="area" value="" class="form-control" placeholder="エリア">
-            </div>
-            <div class="header-search ">
-                <input type="text" name="keyword" id="keyword" value="" class="form-control" placeholder="キーワード">
-            </div>
-            <input type="submit" name="commit" value="" class="d-none" data-disable-with>
-        </form>
-    
-        <div class="header-right-nav">
-            <div class="nav-item">
-                <nav>
-                    <% if user_signed_in? %>
-                     <strong><%= link_to current_user.name, pages_show_path %></strong>
-                        <!-- <%= link_to 'Change profile', edit_user_registration_path %> -->
-                        <%= link_to 'Logout', logout_path  %>
-                    <% else %>
-                        <div class="btn-signup">
-                            <%= link_to 'Signup', new_user_registration_path %>
-                        </div>
-                        <div class="btn-login">
-                            <%= link_to 'Login', new_user_session_path %>
-                        </div>
-                    <% end %>
-                </nav>
-            </div>
-        </div>
-    </div>
-</header>
-
-<!-- <div class="clear-fix">
-    ::after
-</div> -->
-
 <div class="top">
     <div class="top-main">
         <div class="container">
@@ -44,11 +7,11 @@
                 <div class="form-fream">
                     <div class="form-area">
                         <p class="form-area-title mb-4">Potepan Shareでまだ体験したことのない旅をしよう</p>
-                        <!-- form action -->
-                        <label for="___">エリア</label>
-                        <input type="text" name="area" value="" class="form-control mb-4" placeholder="東京">
-                        <input type="submit" name="commit" value="探す" class="form-control btn-primary mb-4">
-                        <!--  form action 閉じ-->
+                        <%= search_form_for @search, url: search_rooms_path, method: :get do |f| %>
+                            <%= f.label :room_address_cont, 'エリア' %>
+                            <%= f.search_field :room_address_cont, class: "top-input", placeholder: "東京" %>
+                            <%= f.submit "探す", class: "btn top-btn" %>
+                        <% end %>
                     </div>
                 </div>  
             </div>  
