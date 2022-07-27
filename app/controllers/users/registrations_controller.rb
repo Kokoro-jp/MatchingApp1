@@ -63,7 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    pages_show_path
+    user_profile_path
     # "/user/#{current_user.id}"
   end
 

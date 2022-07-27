@@ -18,14 +18,16 @@
             <img src="	https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="サイトのロゴ画像">
         </a>
       </div>
+
       <div class="header-inner">
+        
       </div>
 
       <div class="header-right-nav">
         <div class="nav-item">
             <nav>
                 <% if user_signed_in? %>
-                 <strong><%= link_to current_user.name, pages_show_path %></strong>
+                 <strong><%= link_to current_user.name, user_profile_path(current_user.id) %></strong>
                     <!-- <%= link_to 'Change profile', edit_user_registration_path %> -->
                     <!-- <%= link_to 'Logout', logout_path  %> -->
                 <% else %>
@@ -42,16 +44,20 @@
               <i></i>
               <i></i>
             </span>
-
-            <nav class="nav">
-              <ul class="nav_menu_ul">
-                <li class="nav_menu_li"><%= link_to 'ルーム登録', new_room_path %></li>
-                <li class="nav_menu_li"><%= link_to '予約済みルーム一覧', reservations_path %></li>
-                <li class="nav_menu_li"><%= link_to '登録済みルーム一覧', rooms_path %></li>
-                <li class="nav_menu_li"><%= link_to '設定', pages_show_path %></li>
-                <li class="nav_menu_li"><%= link_to 'logout', logout_path%></li>
-              </ul>
-            </nav>
+            
+            <% if user_signed_in? %>
+              <nav class="nav">
+                <ul class="nav_menu_ul">
+                  <li class="nav_menu_li"><%= link_to 'ルーム登録', new_room_path %></li>
+                  <li class="nav_menu_li"><%= link_to '予約済みルーム一覧', reservations_path %></li>
+                  <li class="nav_menu_li"><%= link_to '登録済みルーム一覧', rooms_path %></li>
+                  <li class="nav_menu_li">
+                    <%= link_to '設定', user_account_path(current_user.id) %>
+                  </li>
+                  <li class="nav_menu_li"><%= link_to 'logout', logout_path %></li>
+                </ul>
+              </nav>
+            <% end %>
         </div>
     </div>
     </header>
