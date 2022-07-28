@@ -5,20 +5,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   @user = User.new
-  # end
+  def new
+    @user = User.new
+  end
 
   # POST /resource
-  # def create
-  #   @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
-  #   if @user.save
-  #     flash[:notice] = "Created new account"
-  #     redirect_to pages_show_path
-  #   else
-  #     render "new"
-  #   end
-  # end
+  def create!
+    @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
+    if @user.save
+      flash[:notice] = "Created new account"
+      redirect_to user_profile_path(:user_id)
+    else
+      render "new"
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -63,7 +63,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    user_profile_path
+    binding.pry
+    user_profile_path(:user_id)
+    binding.pry
     # "/user/#{current_user.id}"
   end
 

@@ -1,4 +1,16 @@
-<%= form_with model:@user, url: {controller: "users", action: "update"} do |f| %>
+<h3>Profile</h3>
+
+
+<div class="user-icon">
+   <% if @user.img? %>
+    <%= image_tag @user.img.url, class: "user-img" %>
+<% else %>
+    <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg" alt="アイコン画像">
+<% end %>
+
+<%= form_with model:@user, url: {controller: "users", action: "update"} do |f| %> 
+</div>
+
     <table>
         <tr>
             <th><%= f.label :img, "アイコン画像" %></th>
