@@ -24,30 +24,31 @@
             <div class="row">
                 <div class="panel-item col-lg-3 col-6">
                     <span>東京</span>
-                    <a href="https://presite-potepancamp-rails-02.herokuapp.com/rooms/search?area=%E6%9D%B1%E4%BA%AC">
-                        <img class="panel-image" src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_tokyo.jpg">
+                    <%= link_to search_rooms_path(q: {room_address_cont: "%東京%"}) do %>
+                        <%= image_tag 'https://presite-potepancamp-rails-02.herokuapp.com/assets/img_tokyo.jpg', class: "panel-img" %>
+                    <% end %>
                     </a>
                     <div class="shadow"></div>
                 </div>
                 <div class="panel-item col-lg-3 col-6">
                     <span>大阪</span>
-                    <a href="https://presite-potepancamp-rails-02.herokuapp.com/rooms/search?area=%E5%A4%A7%E9%98%AA">
-                        <img class="panel-image" src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_osaka.jpg">
-                    </a>
+                    <%= link_to search_rooms_path(q: {room_address_cont: "%大阪%"}) do %>
+                        <%= image_tag 'https://presite-potepancamp-rails-02.herokuapp.com/assets/img_osaka.jpg', class: "panel-img" %>
+                    <% end %>
                     <div class="shadow"></div>
                 </div>
                 <div class="panel-item col-lg-3 col-6">
                     <span>京都</span>
-                    <a href="https://presite-potepancamp-rails-02.herokuapp.com/rooms/search?area=%E4%BA%AC%E9%83%BD">
-                        <img class="panel-image" src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_kyoto.jpg">
-                    </a>
+                    <%= link_to search_rooms_path(q: {room_address_cont: "%京都%"}) do %>
+                        <%= image_tag 'https://presite-potepancamp-rails-02.herokuapp.com/assets/img_kyoto.jpg', class: "panel-img" %>
+                    <% end %>
                     <div class="shadow"></div>
                 </div>
                 <div class="panel-item col-lg-3 col-6">
                     <span>札幌</span>
-                    <a href="https://presite-potepancamp-rails-02.herokuapp.com/rooms/search?area=%E6%9C%AD%E5%B9%8C">
-                        <img class="panel-image" src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_sapporo.jpg">
-                    </a>
+                    <%= link_to search_rooms_path(q: {room_address_cont: "%北海道%"}) do %>
+                        <%= image_tag 'https://presite-potepancamp-rails-02.herokuapp.com/assets/img_sapporo.jpg', class: "panel-img" %>
+                    <% end %>
                     <div class="shadow"></div>
                 </div>
             </div>
