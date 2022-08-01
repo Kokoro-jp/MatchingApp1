@@ -15,7 +15,7 @@
     <header>
       <div class="header-left-nav">
         <a href="http://localhost:3000">
-            <img src="	https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="サイトのロゴ画像">
+            <img src="	https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="サイトのロゴ画像" class="header-logo">
         </a>
       </div>
 
@@ -30,7 +30,10 @@
         <div class="nav-item">
             <nav>
                 <% if user_signed_in? %>
-                 <strong><%= link_to current_user.name, user_profile_path(current_user.id) %></strong>
+                  <div>
+                    <strong ><%= link_to current_user.name, user_profile_path(current_user.id), class: "user-name" %></strong>
+                  </div>
+                  
                     <!-- <%= link_to 'Change profile', edit_user_registration_path %> -->
                     <!-- <%= link_to 'Logout', logout_path  %> -->
                 <% else %>
@@ -62,7 +65,7 @@
               </nav>
             <% end %>
         </div>
-    </div>
+      </div>
     </header>
 
     <p class="notice"><%= notice %></p>
