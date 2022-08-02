@@ -1,21 +1,19 @@
-<h4>ユーザーアカウント画面</h4>
+<h4 class="account-title">ユーザーアカウント画面</h4>
 
-<div>
-    <h5>アカウント</h5>  
+<div class="account-info">
+    <div class="account-email">
+        <label>メールアドレス</label>
+        <%= @user.email%> 
+    </div>
+
+
+    <div class="account-password">
+        <label>パスワード</label>
+        <div>※※※※※※※※※</div>  
+    </div>
+
+    <div class="account-btn">
+        <%= link_to "編集", edit_user_registration_path, class: "btn user-btn user-btn-edit" %>
+    </div>
 </div>
-
-
-<div>
-    <label>メールアドレス</label>
-    <%= @user.email%> 
-</div>
-
-
-<div>
-    <label>パスワード</label>
-    <div>********</div>  
-</div>
-
-<div>
-    <%= link_to "編集", edit_user_registration_path, class: "btn user-btn user-btn-edit" %>
-</div>
+    

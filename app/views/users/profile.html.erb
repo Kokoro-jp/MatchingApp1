@@ -1,4 +1,4 @@
-<h3>Profile</h3>
+<h3 class="profile-title">Profile</h3>
 
 <div class="user-icon">
       <% if @user.img? %>
@@ -8,21 +8,24 @@
       <% end %>  
 </div>
 
-<%= form_with model:@user, url: {controller: "users", action: "update"} do |f| %> 
-    <table>
-        <tr>
-            <th><%= f.label :img, "アイコン画像" %></th>
-            <td><%= f.file_field :img, class: "" %></td>
-        </tr>
-        <tr>
-            <th><%= f.label :name, "名前" %></th>
-            <td><%= f.text_field :name, class: "" %></td>
-        </tr>
-        <tr>
-            <th><%= f.label :introduction, "自己紹介" %></th>
-            <td><%= f.text_area :introduction, class: "" %></td>
-        </tr>
-    </table>
+<%= form_with model:@user, url: {controller: "users", action: "update"}, class: "user-table" do |f| %> 
+   <div class="user-info">
+        <table>
+            <tr>
+                <th><%= f.label :img, "アイコン画像" %></th>
+                <td><%= f.file_field :img, class: "user-profile-img" %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :name, "名前" %></th>
+                <td><%= f.text_field :name, class: "" %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :introduction, "自己紹介" %></th>
+                <td><%= f.text_area :introduction, class: "" %></td>
+            </tr>
+        </table>
+   </div> 
+    
 
     <div>
         <ul>
