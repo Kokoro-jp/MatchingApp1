@@ -41,7 +41,6 @@ class RoomsController < ApplicationController
     @search = Room.ransack(params[:q])
     @rooms = @search.result
     @numbers = @rooms.count
-    binding.pry
   end
  
 

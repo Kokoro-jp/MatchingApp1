@@ -5,7 +5,7 @@ class Room < ApplicationRecord
 
     validates :room_name, presence: true
     validates :room_introduction, presence: true
-    validates :room_price, presence: true
-    validates :room_address, presence: true, numericality: true
+    validates :room_price, presence: true, numericality: true
+    validates :room_address, presence: true
     validates :room_img, presence: true
 end

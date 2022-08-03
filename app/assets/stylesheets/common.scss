@@ -9,9 +9,22 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
+tr:nth-child(even) th{
+    background-color: #f8f8f8;
+}
+tr:nth-child(even) td {
+    background-color: #f8f8f8!important;
+}
+th{
+    font-size: small;
+}
+td{
+    text-align: center;
+}
+
 .row {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin-right: -15px;
     margin-left: -15px;
 }
