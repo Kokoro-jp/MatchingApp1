@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  def create!
+  def create
     @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
     if @user.save
       flash[:notice] = "Created new account"
@@ -63,9 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    binding.pry
     user_profile_path(:user_id)
-    binding.pry
     # "/user/#{current_user.id}"
   end
 
