@@ -21,7 +21,6 @@ th{
 td{
     text-align: center;
 }
-
 .row {
     display: flex;
     flex-wrap: nowrap;
@@ -59,7 +58,6 @@ header{
     background-color: #6c757d;
 }
 img {
-    
     border-style: none;
 }
 .header-left-nav form {
@@ -143,7 +141,6 @@ img {
     opacity: 1;
     visibility: visible;
   }
-
   .nav-item{
     display: flex;
     margin-top: 20px;
@@ -151,19 +148,15 @@ img {
   .user-name{
     color: #fff;
   }
-
-
 .top .top-main{
     background-image: url(https://presite-potepancamp-rails-02.herokuapp.com/assets/img_cover_top.jpg);
     background-size: cover;
     width: 100%;
     height: 700px;
 }
-
 div{
     display: block;
 }
-
 .container {
     width: 100%;
     padding-right: 15px;
@@ -213,7 +206,6 @@ div{
     padding: 24px;
     border-radius: 5px;
 }
-
 
 footer{
     // position: absolute;

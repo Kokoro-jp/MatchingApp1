@@ -24,6 +24,4 @@ class PagesController < ApplicationController
     #         render "edit"
     #     end
     # end
-
-
 end

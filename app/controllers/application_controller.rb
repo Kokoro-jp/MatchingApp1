@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
 
     def after_sign_in_path_for(resource)
         "/pages/index"
-        # "/user/#{current_user.id}"
     end
 
     def after_sign_out_path_for(resource)

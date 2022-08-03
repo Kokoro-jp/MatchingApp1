@@ -43,7 +43,6 @@ class RoomsController < ApplicationController
     @numbers = @rooms.count
   end
  
-
   def room_params
     params.require(:room).permit(:room_name, :room_introduction, :room_price, :room_address, :room_img, :user_id)
   end

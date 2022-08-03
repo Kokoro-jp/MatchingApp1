@@ -21,7 +21,6 @@ class ReservationsController < ApplicationController
   #   Reservation.create!(reservation_params)
   # end
 
-
   def create
     @reservation = Reservation.new(reservation_params)
     @room = @reservation.room

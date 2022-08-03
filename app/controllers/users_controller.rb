@@ -19,5 +19,4 @@ class UsersController < ApplicationController
       render "profile"
     end
   end
-
 end
