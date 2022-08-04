@@ -1,0 +1,30 @@
+<div class="room-index-title">
+    <h1>Room一覧画面</h1>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>ルーム画像</th>
+            <th>ルーム名</th>
+            <th>ルーム紹介</th>
+            <th>料金</th>
+            <th>作成日</th>
+        </tr> 
+    </thead>
+
+    <tbody>
+        <% @rooms.each do |room| %>
+            <tr>
+                <td><%= image_tag room.room_img.url %></td>
+                <td>
+                    <%= link_to room.room_name, room_path(room.id) %>  
+                </td>
+                <td><%= room.room_introduction %></td>
+                <td><%= room.room_price %>円</td>
+                <td><%= room.created_at.to_s(:datetime_jp) %></td>
+                <td><%= link_to "削除", room, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %> </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

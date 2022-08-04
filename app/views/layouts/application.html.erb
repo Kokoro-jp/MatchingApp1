@@ -8,9 +8,80 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   </head>
 
   <body>
+    <header>
+      <div class="header-left-nav">
+        <a href="http://localhost:3000">
+            <img src="	https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="サイトのロゴ画像" class="header-logo">
+        </a>
+      </div>
+
+      <div class="header-inner">
+      <%= search_form_for @search, url: search_rooms_path, method: :get do |f| %>
+        <%= f.search_field:room_name_or_room_address_or_room_introduction_cont, class: "form-keyword", placeholder: "キーワード検索" %>
+        <%= f.submit "探す",class:"button" %>
+      <% end %>
+      </div>
+
+      <div class="header-right-nav">
+        <div class="nav-item">
+            <nav>
+                <% if user_signed_in? %>
+                  <div>
+                    <strong ><%= link_to current_user.name, user_profile_path(current_user.id), class: "user-name" %></strong>
+                  </div>
+                <% else %>
+                    <div class="signup-in-btn">
+                      <div class="btn-signup">
+                        <%= link_to 'Signup', new_user_registration_path, class: "signup-btn" %>
+                      </div>
+                      <div class="btn-login">
+                          <%= link_to 'Login', new_user_session_path, class: "login-btn" %>
+                      </div>
+                    </div>
+                    
+                <% end %>
+            </nav>
+            <span class="nav_toggle">
+              <i></i>
+              <i></i>
+              <i></i>
+            </span>
+            
+            <% if user_signed_in? %>
+              <nav class="nav">
+                <ul class="nav_menu_ul">
+                  <li class="nav_menu_li"><%= link_to 'ルーム登録', new_room_path %></li>
+                  <li class="nav_menu_li"><%= link_to '予約済みルーム一覧', reservations_path %></li>
+                  <li class="nav_menu_li"><%= link_to '登録済みルーム一覧', rooms_path %></li>
+                  <li class="nav_menu_li">
+                    <%= link_to '設定', user_account_path(current_user.id) %>
+                  </li>
+                  <li class="nav_menu_li"><%= link_to 'logout', logout_path %></li>
+                </ul>
+              </nav>
+            <% end %>
+        </div>
+      </div>
+    </header>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <body>
+      <script>
+        $(".nav_toggle").on("click", function () {
+          $(".nav_toggle, .nav").toggleClass("show");
+        });
+      </script>
+    </body>
     <%= yield %>
+
+    <footer>
+      <p>©︎ 2020 POTEPAN.INC</p>
+    </footer>
   </body>
 </html>

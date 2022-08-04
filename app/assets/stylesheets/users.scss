@@ -1,0 +1,36 @@
+//profile.html.erb
+.profile-title{
+    text-align: center;
+    margin-right: 20%;
+}
+.user-img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;  
+}
+.user-icon{
+    text-align: center;
+}
+.user-table{
+    text-align: center;
+}
+.user-info{
+    display: inline-block;
+    text-align: center;
+}
+.user-profile-img{
+    margin-left: 80px;
+}
+
+//account.html.erb
+.account-email{
+    margin-left: 20%;
+}
+.account-password{
+    display: flex;
+    text-indent: 5px;
+    margin-left: 20%;
+}
+.account-btn{
+    margin-left: 20%;
+}

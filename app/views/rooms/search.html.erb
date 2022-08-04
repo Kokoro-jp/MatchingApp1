@@ -1,0 +1,20 @@
+<h4 class="rooms-search-title">検索結果<%= @numbers%>件</h4>
+
+<% @rooms.each do |room| %>
+    <div class="search-result">
+       <%= link_to controller: 'rooms', action: 'show', id: room.id do %>
+            <%= image_tag room.room_img.url, :alt => 'ルーム画像', class: "frame-room-image" %>
+            <div class="rooms-info">
+                <div>
+                    <%= room.room_name %>
+                </div>
+                <div>
+                    <%= room.room_address %>
+                </div>         
+                <div>
+                    <%= room.room_price %>円
+                </div>
+            </div>
+        <% end %> 
+    </div>
+<% end %>

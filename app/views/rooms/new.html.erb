@@ -1,0 +1,35 @@
+<h3 class="rooms-new-title">room情報新規登録</h3>
+
+<%= form_with model: @room do |f| %>
+<%= f.hidden_field :user_id, :value => current_user.id%>
+
+    <table>
+        <tr>
+            <th><%= f.label :room_name ,"ルーム名" %></th>
+            <td><%= f.text_field :room_name, class: "" %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :room_introduction ,"ルーム紹介" %></th>
+            <td><%= f.text_area :room_introduction, class: "" %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :room_price ,"ルーム料金" %></th>
+            <td><%= f.number_field :room_price, class: "" %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :room_address ,"住所" %></th>
+            <td><%= f.text_field :room_address, class: "" %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :room_img ,"ルーム画像" %></th>
+            <td><%= f.file_field :room_img, class: "" %></td>
+        </tr>
+    </table>
+
+    <div>
+        <ul>
+            <li><%= f.submit "登録"%></li>
+        </ul>
+    </div>
+
+<% end %>
