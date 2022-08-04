@@ -34,12 +34,15 @@
                     <strong ><%= link_to current_user.name, user_profile_path(current_user.id), class: "user-name" %></strong>
                   </div>
                 <% else %>
-                    <div class="btn-signup">
-                        <%= link_to 'Signup', new_user_registration_path %>
+                    <div class="signup-in-btn">
+                      <div class="btn-signup">
+                        <%= link_to 'Signup', new_user_registration_path, class: "signup-btn" %>
+                      </div>
+                      <div class="btn-login">
+                          <%= link_to 'Login', new_user_session_path, class: "login-btn" %>
+                      </div>
                     </div>
-                    <div class="btn-login">
-                        <%= link_to 'Login', new_user_session_path %>
-                    </div>
+                    
                 <% end %>
             </nav>
             <span class="nav_toggle">

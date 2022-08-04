@@ -51,11 +51,23 @@ header{
 .header-right-nav {
     float: right;
 }
+.signup-in-btn{
+    display: flex;
+}
 .btn-signup {
     background-color: #4a90e2;
+    margin-right: 10px;
+    
+}
+.signup-btn{
+    color: #fff;
 }
 .btn-login {
     background-color: #6c757d;
+    margin-right: 10px;
+}
+.login-btn{
+    color: #fff;
 }
 img {
     border-style: none;
